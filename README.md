@@ -1,24 +1,41 @@
-# README
+## users テーブル
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| name               | string | null: false |
+| encrypted_password | string | null: false |
+| first_name         | string | null: false |
+| last_name          | string | null: false |
+| first_name_kana    | string | null: false |
+| last_name_kana     | string | null: false |
+| birth              | string | null: false |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## goods テーブル
+| Column             | Type      | Options                         |
+| ------------------ | --------- | --------------------------------|
+| goods_name         | string    | null: false                     |
+| text               | text      | null: false                     | 
+| category           | string    | null: false                     |  
+| condition          | string    | null: false                     |
+| shipping           | string    | null: false                     | 
+| ship_from          | string    | null: false                     | 
+| shipment_date      | string    | null: false                     |  
+| user               | references| null: false, foreign_key: true  |
 
-Things you may want to cover:
+## orders テーブル
+| Column             | Type       | Options                         |
+| ------------------ | -----------| --------------------------------|
+| user               | references | null: false, foreign_key: true  |
+| goods              | references | null: false, foreign_key: true  |
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## addresses　テーブル
+| Column             | Type      | Options                         |
+| ------------------ | --------- | --------------------------------|
+| postal_code        | string    | null: false                     |
+| state              | text      | null: false                     | 
+| city               | string    | null: false                     |  
+| address_line       | string    | null: false                     |
+| phone              | string    | null: false                     | 
+| user               | references| null: false, foreign_key: true  |
+| goods              | references| null: false, foreign_key: true  |
