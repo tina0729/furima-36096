@@ -26,7 +26,7 @@
 | shipping_id        | integer   | null: false                     | 
 | ship_from_id       | integer   | null: false                     | 
 | shipment_date_id   | integer   | null: false                     |  
-| user               | references| null: false, foreign_key: true  |
+| user               | references| foreign_key: true               |
 
 ### Association
 
@@ -34,16 +34,15 @@
 * has_one :order
 
 ## orders テーブル
-| Column             | Type       | Options                         |
-| ------------------ | -----------| --------------------------------|
-| user               | references | null: false, foreign_key: true  |
-| product            | references | null: false, foreign_key: true  |
-| address            | references | null: false, foreign_key: true  |
+| Column             | Type       | Options            |
+| ------------------ | -----------| -------------------|
+| user               | references | foreign_key: true  |
+| product            | references | foreign_key: true  |
 
 ### Association
 
 * has_many :users
-* belongs_to :products
+* belongs_to :product
 * has_one :address
 
 ## addresses テーブル
@@ -55,10 +54,8 @@
 | address_line       | integer   | null: false                     |
 | building_name      | string    |                                 |
 | phone              | string    | null: false                     | 
-| user               | references| null: false, foreign_key: true  |
-| order              | references| null: false, foreign_key: true  |
+| order              | references| foreign_key: true               |
 
 ### Association
 
-* belongs_to :product
 * belongs_to :order
