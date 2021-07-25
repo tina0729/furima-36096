@@ -24,7 +24,7 @@
 | category_id        | integer   | null: false                     |  
 | condition_id       | integer   | null: false                     |
 | shipping_id        | integer   | null: false                     | 
-| ship_from_id       | integer   | null: false                     | 
+| prefecture_id      | integer   | null: false                     | 
 | shipment_date_id   | integer   | null: false                     |  
 | user               | references| foreign_key: true               |
 
@@ -41,7 +41,7 @@
 
 ### Association
 
-* has_many :users
+* belongs_to :users
 * belongs_to :product
 * has_one :address
 
