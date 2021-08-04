@@ -4,7 +4,12 @@ class Product < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :condition, :prefecture, :shipment_date, :shipping
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :prefecture
+  belongs_to :shipment_date
+  belongs_to :shipping
+  
   with_options presence: true do
     validates :product_name, :information, :image
     validates :category_id, :condition_id, :shipping_id, :prefecture_id, :shipment_date_id,

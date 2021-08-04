@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @products = Product.all
   end
@@ -19,9 +19,6 @@ class ProductsController < ApplicationController
 
   private
 
-  def move_to_index
-    redirect_to new_user_session_path unless user_signed_in?
-  end
 
   def product_params
     params.require(:product).permit(:product_name, :information, :price, :category_id, :condition_id, :shipping_id,
