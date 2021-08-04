@@ -8,8 +8,8 @@ class User < ApplicationRecord
     validates :first_name, :last_name, :first_name_kana, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
     validates :first_name_kana, :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
     validates :nickname, :birth
-  end  
-  
+  end
+
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX
 

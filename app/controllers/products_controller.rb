@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-  end  
+  end
 
   def create
     @product = Product.new(product_params)
@@ -15,16 +15,16 @@ class ProductsController < ApplicationController
     else
       render :new
     end
-  end  
+  end
 
   private
 
   def move_to_index
     redirect_to new_user_session_path unless user_signed_in?
-  end  
+  end
 
   def product_params
-    params.require(:product).permit(:product_name, :information, :price,:category_id, :condition_id, :shipping_id, :prefecture_id, :shipment_date_id, :image).merge(user_id: current_user.id)
-  end  
-
-end 
+    params.require(:product).permit(:product_name, :information, :price, :category_id, :condition_id, :shipping_id,
+                                    :prefecture_id, :shipment_date_id, :image).merge(user_id: current_user.id)
+  end
+end
