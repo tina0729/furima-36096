@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @products = Product.all.order("id DESC")
+    @products = Product.all.order('id DESC')
   end
 
   def new
@@ -18,7 +18,6 @@ class ProductsController < ApplicationController
   end
 
   private
-
 
   def product_params
     params.require(:product).permit(:product_name, :information, :price, :category_id, :condition_id, :shipping_id,

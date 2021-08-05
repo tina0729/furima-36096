@@ -96,7 +96,7 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include('Price is not a number')
       end
-      
+
       it 'priceは半角英語だけでは登録できない' do
         @product.price = 'abcdef'
         @product.valid?
@@ -106,38 +106,38 @@ RSpec.describe Product, type: :model do
       it 'category_idは1以外でないと登録できない' do
         @product.category_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category is invalid")
+        expect(@product.errors.full_messages).to include('Category is invalid')
       end
 
       it 'condition_idは1以外でないと登録できない' do
         @product.condition_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Condition is invalid")
+        expect(@product.errors.full_messages).to include('Condition is invalid')
       end
 
       it 'shipping_idは1以外でないと登録できない' do
         @product.shipping_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shipping is invalid")
+        expect(@product.errors.full_messages).to include('Shipping is invalid')
       end
 
       it 'prefecture_idは1以外でないと登録できない' do
         @product.prefecture_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Prefecture is invalid")
+        expect(@product.errors.full_messages).to include('Prefecture is invalid')
       end
 
       it 'shipment_date_idは1以外でないと登録できない' do
         @product.shipment_date_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Shipment date is invalid")
+        expect(@product.errors.full_messages).to include('Shipment date is invalid')
       end
 
       it 'ユーザーが紐づいていなければ出品できない' do
         @product.user = nil
         @product.valid?
         expect(@product.errors.full_messages).to include('User must exist')
-      end  
+      end
     end
   end
 end
