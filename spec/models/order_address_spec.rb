@@ -76,7 +76,7 @@ RSpec.describe OrderAddress, type: :model do
       end
 
       it 'phoneは英数混合では登録できない' do
-        @order_address.phone = '12345678o'
+        @order_address.phone = '12345678o0'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
