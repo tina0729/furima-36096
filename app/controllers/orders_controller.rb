@@ -1,11 +1,15 @@
 class OrdersController < ApplicationController
+  before_action :set_product, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
+
   def index
     @order_address = OrderAddress.new
-    @product = Product.find(params[:product_id])
+    if current_user == @product.user
+      redirect_to root_path
+    end  
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_product
@@ -17,6 +21,16 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
+
+  def move_to_index
+    if current_user == @product.user || @product.order != nil
+      redirect_to root_path
+    end  
+  end
 
   def order_params
     params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :address_line, :building_name, :phone).merge(
