@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.order('id DESC')
+    
   end
 
   def new
@@ -50,6 +51,6 @@ class ProductsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path unless @product.user == current_user
+    redirect_to root_path unless @product.user.id == current_user.id && @product.order == nil
   end
 end
